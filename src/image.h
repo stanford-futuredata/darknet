@@ -8,6 +8,11 @@
 #include <math.h>
 #include "box.h"
 
+#include "opencv2/highgui/highgui_c.h"
+#include "opencv2/imgproc/imgproc_c.h"
+#include "opencv2/imgcodecs/imgcodecs_c.h"
+#include "opencv2/videoio/videoio_c.h"
+
 typedef struct {
     int h;
     int w;
@@ -83,5 +88,8 @@ image get_image_layer(image m, int l);
 
 void free_image(image m);
 void test_resize(char *filename);
+
+
+image ipl_to_image(IplImage* src);
 #endif
 

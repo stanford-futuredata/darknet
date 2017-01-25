@@ -8,9 +8,7 @@ layer make_shortcut_layer(int batch, int index, int w, int h, int c, int w2, int
 void forward_shortcut_layer(const layer l, network_state state);
 void backward_shortcut_layer(const layer l, network_state state);
 
-#ifdef GPU
 void forward_shortcut_layer_gpu(const layer l, network_state state);
 void backward_shortcut_layer_gpu(const layer l, network_state state);
-#endif
 
 #endif
