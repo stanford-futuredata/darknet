@@ -6,7 +6,7 @@ DEBUG=0
 ARCH= -gencode arch=compute_50,code=[sm_50,compute_50] \
       -gencode arch=compute_52,code=[sm_52,compute_52] \
       -gencode arch=compute_60,code=[sm_60,compute_60] \
-      -gencode arch=compute_61,code=[sm_61,compute_61] \
+      -gencode arch=compute_61,code=[sm_61,compute_61]
 
 # This is what I use, uncomment if you know your arch and want to specify
 # ARCH=  -gencode arch=compute_52,code=compute_52
@@ -15,11 +15,11 @@ VPATH=./src/
 EXEC=yolo_standalone
 OBJDIR=./obj/
 
-CC=g++
+CC=gcc
 NVCC=nvcc 
 OPTS=-Ofast
 LDFLAGS= -lm -pthread 
-COMMON= 
+COMMON=
 CFLAGS=-Wall -Wfatal-errors
 
 ifeq ($(DEBUG), 1) 
@@ -36,9 +36,9 @@ COMMON+= `pkg-config --cflags opencv`
 endif
 
 ifeq ($(GPU), 1) 
-COMMON+= -DGPU -I/lfs/local/0/ddkang/local/cuda/include/
+COMMON+= -DGPU -I/usr/local/cuda-8.0/include/
 CFLAGS+= -DGPU
-LDFLAGS+= -L/lfs/local/0/ddkang/local/cuda/lib64 -lcuda -lcudart -lcublas -lcurand
+LDFLAGS+= -L/usr/local/cuda-8.0/lib64 -lcuda -lcudart -lcublas -lcurand
 endif
 
 ifeq ($(CUDNN), 1) 

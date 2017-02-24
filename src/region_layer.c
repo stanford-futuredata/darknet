@@ -369,11 +369,11 @@ void forward_region_layer_gpu(const layer l, network_state state)
         softmax_gpu(l.output_gpu+5, l.classes, l.classes + 5, l.w*l.h*l.n*l.batch, 1, l.output_gpu + 5);
     }
 
-    float *in_cpu = calloc(l.batch*l.inputs, sizeof(float));
+    float *in_cpu = (float *) calloc(l.batch*l.inputs, sizeof(float));
     float *truth_cpu = 0;
     if(state.truth){
         int num_truth = l.batch*l.truths;
-        truth_cpu = calloc(num_truth, sizeof(float));
+        truth_cpu = (float *) calloc(num_truth, sizeof(float));
         cuda_pull_array(state.truth, truth_cpu, num_truth);
     }
     cuda_pull_array(l.output_gpu, in_cpu, l.batch*l.inputs);

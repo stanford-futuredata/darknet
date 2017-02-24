@@ -136,8 +136,8 @@ network make_network(int n)
     net.layers = (layer *) calloc(net.n, sizeof(layer));
     net.seen = (int *) calloc(1, sizeof(int));
     #ifdef GPU
-    net.input_gpu = calloc(1, sizeof(float *));
-    net.truth_gpu = calloc(1, sizeof(float *));
+    net.input_gpu = (float **) calloc(1, sizeof(float *));
+    net.truth_gpu = (float **) calloc(1, sizeof(float *));
     #endif
     return net;
 }
@@ -376,7 +376,7 @@ int resize_network(network *net, int w, int h)
         net->workspace = cuda_make_array(0, (workspace_size-1)/sizeof(float)+1);
     }else {
         free(net->workspace);
-        net->workspace = calloc(1, workspace_size);
+        net->workspace = (float *) calloc(1, workspace_size);
     }
 #else
     free(net->workspace);
