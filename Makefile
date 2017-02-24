@@ -15,7 +15,7 @@ VPATH=./src/
 EXEC=yolo_standalone
 OBJDIR=./obj/
 
-CC=gcc
+CC=g++
 NVCC=nvcc 
 OPTS=-Ofast
 LDFLAGS= -lm -pthread 
