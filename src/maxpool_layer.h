@@ -14,10 +14,8 @@ void resize_maxpool_layer(maxpool_layer *l, int w, int h);
 void forward_maxpool_layer(const maxpool_layer l, network_state state);
 void backward_maxpool_layer(const maxpool_layer l, network_state state);
 
-#ifdef GPU
 void forward_maxpool_layer_gpu(maxpool_layer l, network_state state);
 void backward_maxpool_layer_gpu(maxpool_layer l, network_state state);
-#endif
 
 #endif
 

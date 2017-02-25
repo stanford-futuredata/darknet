@@ -55,10 +55,8 @@ typedef struct network{
     int gpu_index;
     tree *hierarchy;
 
-    #ifdef GPU
     float **input_gpu;
     float **truth_gpu;
-    #endif
 } network;
 
 typedef struct network_state {
@@ -71,7 +69,6 @@ typedef struct network_state {
     network net;
 } network_state;
 
-#ifdef GPU
 float train_networks(network *nets, int n, data d, int interval);
 void sync_nets(network *nets, int n, int interval);
 float train_network_datum_gpu(network net, float *x, float *y);
@@ -82,7 +79,6 @@ float *get_network_output_gpu(network net);
 void forward_network_gpu(network net, network_state state);
 void backward_network_gpu(network net, network_state state);
 void update_network_gpu(network net);
-#endif
 
 float get_current_rate(network net);
 int get_current_batch(network net);

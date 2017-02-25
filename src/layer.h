@@ -201,7 +201,6 @@ struct layer{
 
     size_t workspace_size;
 
-    #ifdef GPU
     int *indexes_gpu;
 
     float *z_gpu;
@@ -253,7 +252,6 @@ struct layer{
     float * rand_gpu;
     float * squared_gpu;
     float * norms_gpu;
-    #ifdef CUDNN
     cudnnTensorDescriptor_t srcTensorDesc, dstTensorDesc;
     cudnnTensorDescriptor_t dsrcTensorDesc, ddstTensorDesc;
     cudnnFilterDescriptor_t weightDesc;
@@ -262,8 +260,6 @@ struct layer{
     cudnnConvolutionFwdAlgo_t fw_algo;
     cudnnConvolutionBwdDataAlgo_t bd_algo;
     cudnnConvolutionBwdFilterAlgo_t bf_algo;
-    #endif
-    #endif
 };
 
 void free_layer(layer);

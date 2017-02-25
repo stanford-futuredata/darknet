@@ -37,8 +37,8 @@ void weighted_sum_cpu(float *a, float *b, float *s, int num, float *c);
 
 void softmax(float *input, int n, float temp, float *output);
 
-#ifdef GPU
 #include "cuda.h"
+#include "tensorflow/core/platform/cuda.h"
 
 void axpy_ongpu(int N, float ALPHA, float * X, int INCX, float * Y, int INCY);
 void axpy_ongpu_offset(int N, float ALPHA, float * X, int OFFX, int INCX, float * Y, int OFFY, int INCY);
@@ -83,5 +83,4 @@ void adam_gpu(int n, float *x, float *m, float *v, float B1, float B2, float rat
 
 void flatten_ongpu(float *x, int spatial, int layers, int batch, int forward, float *out);
 
-#endif
 #endif

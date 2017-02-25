@@ -11,9 +11,7 @@ void forward_normalization_layer(const layer layer, network_state state);
 void backward_normalization_layer(const layer layer, network_state state);
 void visualize_normalization_layer(layer layer, char *window);
 
-#ifdef GPU
 void forward_normalization_layer_gpu(const layer layer, network_state state);
 void backward_normalization_layer_gpu(const layer layer, network_state state);
-#endif
 
 #endif

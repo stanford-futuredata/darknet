@@ -15,13 +15,11 @@ void update_connected_layer(connected_layer layer, int batch, float learning_rat
 void denormalize_connected_layer(layer l);
 void statistics_connected_layer(layer l);
 
-#ifdef GPU
 void forward_connected_layer_gpu(connected_layer layer, network_state state);
 void backward_connected_layer_gpu(connected_layer layer, network_state state);
 void update_connected_layer_gpu(connected_layer layer, int batch, float learning_rate, float momentum, float decay);
 void push_connected_layer(connected_layer layer);
 void pull_connected_layer(connected_layer layer);
-#endif
 
 #endif
 

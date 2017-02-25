@@ -11,10 +11,8 @@ void resize_reorg_layer(layer *l, int w, int h);
 void forward_reorg_layer(const layer l, network_state state);
 void backward_reorg_layer(const layer l, network_state state);
 
-#ifdef GPU
 void forward_reorg_layer_gpu(layer l, network_state state);
 void backward_reorg_layer_gpu(layer l, network_state state);
-#endif
 
 #endif
 
