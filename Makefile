@@ -19,7 +19,7 @@ CC=g++
 NVCC=nvcc
 OPTS=-Ofast
 LDFLAGS= -lm -pthread
-COMMON=
+COMMON= -std=c++11
 CFLAGS=-Wall -Wfatal-errors
 
 ifeq ($(DEBUG), 1)
@@ -56,7 +56,7 @@ endif
 OBJS = $(addprefix $(OBJDIR), $(OBJ))
 DEPS = $(wildcard src/*.h) Makefile
 
-all: obj backup results $(EXEC) $(EXEC2)
+all: obj backup results $(EXEC)
 
 $(EXEC): $(OBJS)
 	$(CC) $(COMMON) $(CFLAGS) $^ -o $@ $(LDFLAGS)
@@ -77,5 +77,5 @@ results:
 .PHONY: clean
 
 clean:
-	rm -rf $(OBJS) $(EXEC) $(EXEC2)
+	rm -rf $(OBJS) $(EXEC)
 
