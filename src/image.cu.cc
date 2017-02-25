@@ -10,12 +10,10 @@
 #define STB_IMAGE_WRITE_IMPLEMENTATION
 #include "stb_image_write.h"
 
-#ifdef OPENCV
 #include "opencv2/highgui/highgui_c.h"
 #include "opencv2/imgproc/imgproc_c.h"
 #include "opencv2/imgcodecs/imgcodecs_c.h"
 #include "opencv2/videoio/videoio_c.h"
-#endif
 
 
 int windows = 0;
@@ -453,15 +451,14 @@ void show_image(image p, const char *name)
 #endif
 }
 
-#ifdef OPENCV
-
 image ipl_to_image(IplImage* src)
 {
-    unsigned char *data = (unsigned char *)src->imageData;
+    // unsigned char *data = (unsigned char *)src->imageData;
+    float *data = (float *) src->imageData;
     int h = src->height;
     int w = src->width;
     int c = src->nChannels;
-    int step = src->widthStep;
+    int step = src->widthStep / sizeof(float);
     image out = make_image(w, h, c);
     int i, j, k, count=0;;
 
@@ -532,7 +529,6 @@ void save_image_jpg(image p, const char *name)
     cvReleaseImage(&disp);
     free_image(copy);
 }
-#endif
 
 void save_image_png(image im, const char *name)
 {

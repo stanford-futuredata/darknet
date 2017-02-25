@@ -48,8 +48,9 @@ YOLO::YOLO(string cfgfile, string weightfile, const int kTargetClass) :
 }
 
 float YOLO::LabelFrame(image im) {
-  image sized = resize_image(im, net_.w, net_.h);
-  float *X = sized.data;
+  /*image sized = resize_image(im, net_.w, net_.h);
+  float *X = sized.data;*/
+  float *X = im.data;
   layer l = net_.layers[net_.n - 1];
 
   network_predict(net_, X);
