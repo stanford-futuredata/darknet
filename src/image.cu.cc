@@ -453,12 +453,12 @@ void show_image(image p, const char *name)
 
 image ipl_to_image(IplImage* src)
 {
-    // unsigned char *data = (unsigned char *)src->imageData;
-    float *data = (float *) src->imageData;
+    unsigned char *data = (unsigned char *)src->imageData;
+    // float *data = (float *) src->imageData;
     int h = src->height;
     int w = src->width;
     int c = src->nChannels;
-    int step = src->widthStep / sizeof(float);
+    int step = src->widthStep;// / sizeof(float);
     image out = make_image(w, h, c);
     int i, j, k, count=0;;
 
