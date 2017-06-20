@@ -9,7 +9,7 @@ load(
 
 tf_kernel_library(
     name = "yolo",
-    copts = ["-DGPU", "-DOPENCV", "-DCUDNN"],
+    copts = ["-DGPU", "-DOPENCV", "-DCUDNN", "-O3"],
     srcs = glob(["src/*.c"]),
     gpu_srcs = glob(["src/*.cc"]) + glob(["src/*.h"]),
     hdrs = glob(["src/*.h"]),

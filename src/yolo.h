@@ -3,6 +3,8 @@
 
 #include "network.h"
 
+#include <vector>
+
 namespace yolo {
 
 using std::string;

@@ -14,11 +14,6 @@
 #include "option_list.h"
 #include "region_layer.h"
 
-#include "opencv2/highgui/highgui_c.h"
-#include "opencv2/imgproc/imgproc_c.h"
-#include "opencv2/videoio/videoio_c.h"
-image get_image_from_stream(CvCapture *cap);
-
 #include "tensorflow/noscope/darknet/src/yolo.h"
 
 namespace yolo {
